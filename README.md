@@ -7,8 +7,8 @@
     <a href='https://alimohammadiamirhossein.github.io/' target='_blank'>Amir Alimohammadi</a><sup>1</sup>&emsp;
     <a href='https://aryanmikaeili.github.io/' target='_blank'>Aryan Mikaeili</a><sup>1</sup>&emsp;
     <a href='https://sauradip.github.io/' target='_blank'>Sauradip Nag</a><sup>1</sup>&emsp;
-    <a href='https://webdocs.cs.ualberta.ca/~hassanpo/' target='_blank'>Negar Hassanpour</a><sup>2</sup>&emsp; 
-    <a href='https://taiya.github.io/' target='_blank'>Andrea Tagliasacchi</a><sup>1, 3, 4</sup>&emsp; <br>
+    <a href='https://webdocs.cs.ualberta.ca/~hassanpo/' target='_blank'>Negar Hassanpour</a><sup>2</sup>&emsp; <br>
+    <a href='https://taiya.github.io/' target='_blank'>Andrea Tagliasacchi</a><sup>1, 3, 4</sup>&emsp; 
     <a href='https://www.sfu.ca/~amahdavi' target='_blank'>Ali Mahdavi Amiri</a><sup>1</sup>&emsp;
 </div>
 <div>
@@ -85,7 +85,7 @@ Cora
 To get started as quickly as possible, follow the instructions in this section. This should allow you train a model from scratch, evaluate your pretrained models, and produce visualizations.  
 
 ### Dependencies
-- Python 3.8+
+- Python 3.10+
 - PyTorch == 2.5.1 **(Please make sure your pytorch version is atleast 2.1)**
 - A modern NVIDIA GPU (e.g., 3090 RTX or newer)
 - Hugging-Face Diffusers
