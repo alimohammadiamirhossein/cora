@@ -1,5 +1,5 @@
 # Arguments
-This is a description to provide details about arguments of Cora. Cora is a new image editing method that enables flexible and accurate edits—like pose changes, object insertions, and background swaps—using only 4 diffusion steps. It is implemented by Amir Alimohammadi.
+This is a description to provide details about arguments of Cora. It is implemented by Amir Alimohammadi.
 
 ## 📂 Directory layout
 ```
