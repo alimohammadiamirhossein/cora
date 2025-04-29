@@ -1,0 +1,13 @@
+einops
+scipy
+scikit-learn
+opencv-python
+torch==2.5.1
+torchvision==0.20.1
+ml-collections==0.1.1
+diffusers==0.27.2
+transformers==4.43.3
+accelerate==0.33.0
+json-with-comments==1.2.7
+gradio==4.44.0
+spaces==0.30.2

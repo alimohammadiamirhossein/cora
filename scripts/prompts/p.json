@@ -1,0 +1,322 @@
+{
+  "girls.jpg": {
+    "src_prompt": "Oil painting of girls at the garden",
+    "tgt_prompt": [
+      "Oil painting of bears at the garden"
+    ],
+    "alpha": 0.6,
+    "beta": 0.0,
+    "masks": [
+      {
+        "start_point": [412, 443],
+        "end_point": [113, 225]
+      }
+    ]
+  },
+  "gcat.jpg": {
+    "src_prompt": "A cat",
+    "tgt_prompt": [
+      "A eagle"
+    ],
+    "alpha": 0.65,
+    "beta": 0
+  },
+  "grey_cat2.jpg": {
+    "src_prompt": "A cat",
+    "tgt_prompt": [
+      "A cat wearing red hat"
+    ],
+    "alpha": 0.2,
+    "masks": [
+      {
+        "start_point": [22, 10],
+        "end_point": [479, 200]
+      }
+    ]
+  },
+  "bald_man.jpg": {
+    "src_prompt": "A bald man",
+    "tgt_prompt": [
+      "A man with natural looking hair"
+    ],
+    "alpha": 0.1,
+    "masks": [
+      {
+        "start_point": [96, 38],
+        "end_point": [398, 180]
+      }
+    ]
+  },
+  "man3.jpg": {
+    "src_prompt": "old man",
+    "tgt_prompt": [
+      "young woman"
+    ],
+    "alpha": 0.7,
+    "beta": 0.2
+  },
+  "korra.png": {
+    "src_prompt": "a girl",
+    "tgt_prompt": [
+      "a zombie"
+    ],
+    "alpha": 0.7,
+    "masks": [
+      {
+        "start_point": [337, 84],
+        "end_point": [178, 311]
+      }
+    ]
+  },
+  "fatty-corgi.jpg": {
+    "src_prompt": "a corgi",
+      "tgt_prompt": [
+        "a poodle"
+      ],
+      "alpha": 0.99,
+      "beta": 0.0
+  },
+  "flower2.jpg": {
+    "src_prompt": "A white tulip",
+    "tgt_prompt": [
+      "A blooming white flower"
+    ],
+    "alpha": 0.4,
+    "masks": [
+      {
+          "start_point": [108, 37],
+          "end_point": [512, 271]
+      }
+    ]
+  },
+  "yellow_cat.jpg": {
+    "src_prompt": "A cat",
+    "tgt_prompt": [
+      "A tiger"
+    ],
+    "alpha": 0.8,
+    "beta": 0.3, 
+    "masks": [
+      {
+        "start_point": [10, 0],
+        "end_point": [512, 512]
+      }
+    ]
+  },
+  "mercedes.jpg": {
+    "src_prompt": "a car",
+    "tgt_prompt": [
+      "a red bus"
+    ],
+    "alpha": 0.1,
+    "beta": 0.0,
+    "masks": [
+      {
+        "start_point": [455, 195],
+        "end_point": [145, 421]
+      }
+    ]
+  },
+  "white_cat.png": {
+    "src_prompt": "a cat",
+    "tgt_prompt": [
+      "a cat wearing suit"
+    ],
+    "alpha": 0.1,
+    "masks": [
+      {
+        "start_point": [62, 62],
+        "end_point": [450, 512]
+      }
+    ]
+  },
+  "fatty-corgi2.jpg": {
+    "src_prompt": "A photo of a corgi",
+    "tgt_prompt": [
+      "A photo of a jumping corgi"
+    ],
+    "alpha": 0.0
+  },
+  "butterfly.jpg": {
+    "src_prompt": "butterfly perched on purple flower",
+    "tgt_prompt": [
+      "butterfly perched on red flower"
+    ],
+    "alpha": 0.6
+  },
+  "cartoon_cat.png": {
+    "src_prompt": "kitten play with colorful yarn balls",
+    "tgt_prompt": [
+      "dog play with colorful yarn balls"
+    ],
+    "alpha": 0.75
+  },
+  "dog.png": {
+    "src_prompt": "a dog",
+    "tgt_prompt": [
+      "a dog is jumping"
+    ],
+    "alpha": 0.0,
+    "masks": [
+      {
+        "start_point": [72, 278],
+        "end_point": [512, 512]
+      },
+      {
+        "start_point": [468, 235],
+        "end_point": [239, 346]
+      }
+    ]
+  },
+  "bear.png":{
+    "src_prompt": "a sitting brown bear",
+    "tgt_prompt": [
+      "a standing green bear"
+    ],
+    "alpha": 0.8,
+    "masks": [
+      {
+        "start_point": [412, 476],
+        "end_point": [47, 0]
+      }
+    ]
+  },
+  "bird.png": {
+    "src_prompt": "a standing bird",
+    "tgt_prompt": [
+      "a bird spreading wings"
+    ],
+    "alpha": 0.6,
+    "masks": [
+      {
+        "start_point": [0, 125],
+        "end_point": [512, 320]
+      }
+    ]
+  },
+  "duck.jpg": {
+    "src_prompt": "A duck",
+    "tgt_prompt": [
+      "A duck spreading its wings"
+    ],
+    "alpha": 0.0,
+    "masks": [
+      {
+        "start_point": [2, 44],
+        "end_point": [511, 483]
+      }
+    ]
+  },
+  "stones.jpeg": {
+    "src_prompt": "A photo of stacked stones",
+    "tgt_prompt": [
+      "A photo of a white wedding cake"
+    ],
+    "alpha": 0.75,
+    "beta": 0.0,
+    "masks": [
+      {
+        "start_point": [49, 113],
+        "end_point": [512, 512]
+      }
+    ]
+  },
+  "pearl.png": {
+      "src_prompt": "an europian girl",
+      "tgt_prompt": ["an asian girl"],
+      "alpha": 0.0,
+      "beta": 0.2,
+      "masks":[
+        {
+          "start_point": [108, 18],
+          "end_point": [501, 512]
+        }
+      ]
+    },
+  "dolphin.jpg": {
+      "src_prompt": "a photo of a dolphin",
+      "tgt_prompt": ["a photo of a shark"],
+      "alpha": 0.6,
+      "beta": 0.4,
+    },
+  "smiling_man2.png": {
+      "src_prompt": "a man wearing sunglasses",
+      "tgt_prompt": ["a woman wearing sunglasses"],
+      "alpha": 0.4,
+      "beta": 0.2,
+    },
+  "car4.jpg": {
+      "src_prompt": "a red sport car in road",
+      "tgt_prompt": [
+        "a silver metalic truck in road",
+      ],
+      "alpha": 0.6,
+      "beta": 0.6,
+      "masks":[
+        {
+          "start_point": [482, 166],
+          "end_point": [8, 415]
+        }
+      ]
+    },
+  "teddy4.png": {
+    "src_prompt": "a teddy bear sitting in snow",
+    "tgt_prompt": [
+      "a teddy bear running in snow",
+    ],
+    "alpha": 0.0,
+    "masks":[
+      {
+        "start_point": [509, 464],
+        "end_point": [124, 93]
+      }
+    ]
+  },
+  "bread.png": {
+    "src_prompt": "bread on a wooden table with tomatoes and a napkin",
+    "tgt_prompt": [
+      "meat on a wooden table with tomatoes and a napkin"
+    ],
+    "alpha": 0.9,
+    "masks": [
+      {
+        "start_point": [130, 160],
+        "end_point": [512, 420]
+      }
+    ]
+  },
+  "shepperd.png": {
+    "src_prompt": "painting of a shepperd dog sitting in a laundry room next to a washing machine",
+    "tgt_prompt": [
+      "painting of a poodle dog sitting in a laundry room next to a washing machine"
+    ],
+    "alpha": 0.7,
+    "masks": [
+      {
+        "start_point": [125, 500],
+        "end_point": [440, 80]
+      }
+    ]
+  },
+  "biden.png": {
+    "src_prompt": "a man wearing a tie",
+    "tgt_prompt": [
+      "a man wearing a black and yellow stripes tie"
+    ],
+    "alpha": 0.9,
+    "masks": [
+      {
+      "start_point": [177, 328],
+      "end_point": [354, 512]
+      }
+    ]
+  },
+  "anime.png": {
+    "src_prompt": "a man in a white shirt standing in front of trees",
+    "tgt_prompt": [
+      "a man in a white shirt standing in front of mountains"
+    ],
+    "alpha": 0.8
+  }
+}
+
