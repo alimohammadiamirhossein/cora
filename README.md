@@ -7,9 +7,8 @@
     <a href='https://alimohammadiamirhossein.github.io/' target='_blank'>Amir Alimohammadi</a><sup>1</sup>&emsp;
     <a href='https://aryanmikaeili.github.io/' target='_blank'>Aryan Mikaeili</a><sup>1</sup>&emsp;
     <a href='https://sauradip.github.io/' target='_blank'>Sauradip Nag</a><sup>1</sup>&emsp;
-  <a href='https://webdocs.cs.ualberta.ca/~hassanpo/' target='_blank'>Negar Hassanpour</a><sup>2</sup>&emsp; 
-  <a href='https://taiya.github.io/' target='_blank'>Andrea Tagliasacchi</a><sup>1, 3, 4</sup>&emsp; <br>
-  <a href='https://www.medicalimageanalysis.com/' target='_blank'>Ghassan Hamarneh</a><sup>1</sup>&emsp;
+    <a href='https://webdocs.cs.ualberta.ca/~hassanpo/' target='_blank'>Negar Hassanpour</a><sup>2</sup>&emsp; 
+    <a href='https://taiya.github.io/' target='_blank'>Andrea Tagliasacchi</a><sup>1, 3, 4</sup>&emsp; <br>
     <a href='https://www.sfu.ca/~amahdavi' target='_blank'>Ali Mahdavi Amiri</a><sup>1</sup>&emsp;
 </div>
 <div>
