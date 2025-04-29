@@ -121,7 +121,7 @@ For detailed explanations of all configurable parameters, JSON formatting, and m
 
 
 ### Gradio demo
-Alternatively, if you want to experiment using [Gradio](https://www.gradio.app/)'s UI, run -
+Alternatively, if you want to experiment using [Gradio](https://www.gradio.app/)'s UI, run:
 ```
 python app.py 
 ```
