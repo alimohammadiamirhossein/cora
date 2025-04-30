@@ -1,5 +1,7 @@
 import os
 import torch
+import torch.nn.functional as F
+import numpy as np
 from PIL import Image
 import jsonc as json
 
@@ -104,6 +106,16 @@ if __name__ == "__main__":
         args.alpha = img_paths_to_prompts[img_name].get("alpha", 0.7)
         args.beta = img_paths_to_prompts[img_name].get("beta", 1)
         masks = img_paths_to_prompts[img_name].get("masks", None)
+        mask_path = None
+        if isinstance(masks, str):
+            mask_path = masks
+            masks = Image.open(masks).convert("L").resize((512, 512))
+            masks = torch.tensor(np.array(masks), device=SAMPLING_DEVICE)
+            masks[masks > 0] = 255.0
+            masks = masks / 255.0
+            masks = torch.clamp(masks, 0, 1)
+            masks = F.interpolate(masks[None, None, :, :], size=(64, 64), mode="nearest")[0, 0]
+
         args.mask = masks
         args.source_prompt = prompt
         args.target_prompt = edit_prompts[0]
@@ -122,5 +134,6 @@ if __name__ == "__main__":
             args=args,
             source_prompt=prompt,
             target_prompt=edit_prompts[0],
-            images=res
+            images=res,
+            mask_path=mask_path,
             )

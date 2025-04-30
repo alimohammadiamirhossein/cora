@@ -2,4 +2,6 @@
 __pycache__/
 *.py[cod]
 .idea/
+
+# Output folder
 output/

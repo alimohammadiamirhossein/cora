@@ -82,6 +82,7 @@ def save_results(
     source_prompt: str,
     target_prompt: str,
     images: Image.Image,
+    mask_path: str = None,
 ):
     src_name = sanitize_prompt(source_prompt)
     tgt_name = sanitize_prompt(target_prompt)
@@ -96,10 +97,10 @@ def save_results(
     concated_image.save(os.path.join(output_dir, f"concat_{next_idx}.png"))
     images[0].save(os.path.join(output_dir, f"input_{next_idx}.png"))
     images[-1].save(os.path.join(output_dir, f"output_{next_idx}.png"))
-
+    if mask_path is not None:
+        args.mask = mask_path
     args_filename = f"args_{next_idx}.json"
     args_path = os.path.join(output_dir, args_filename)
-
     with open(args_path, "w") as f:
         json.dump(vars(args), f, indent=4)
 
