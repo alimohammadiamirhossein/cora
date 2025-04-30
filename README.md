@@ -1,26 +1,26 @@
 
 <div align="center">
 
-<h1>Cora: Correspondence-aware image editing using few step diffusion</h1>
+# Cora: Correspondence-aware Image Editing Using Few-Step Diffusion
 
-<div>
-    <a href='https://alimohammadiamirhossein.github.io/' target='_blank'>Amir Alimohammadi</a><sup>1</sup>&emsp;
-    <a href='https://aryanmikaeili.github.io/' target='_blank'>Aryan Mikaeili</a><sup>1</sup>&emsp;
-    <a href='https://sauradip.github.io/' target='_blank'>Sauradip Nag</a><sup>1</sup>&emsp;
-    <a href='https://webdocs.cs.ualberta.ca/~hassanpo/' target='_blank'>Negar Hassanpour</a><sup>2</sup>&emsp; <br>
-    <a href='https://taiya.github.io/' target='_blank'>Andrea Tagliasacchi</a><sup>1, 3, 4</sup>&emsp; 
-    <a href='https://www.sfu.ca/~amahdavi' target='_blank'>Ali Mahdavi Amiri</a><sup>1</sup>&emsp;
+[Amir Alimohammadi](https://alimohammadiamirhossein.github.io/)<sup>*1</sup> &nbsp;&nbsp;
+[Aryan Mikaeili](https://aryanmikaeili.github.io/)<sup>*1</sup> &nbsp;&nbsp;
+[Sauradip Nag](https://sauradip.github.io/)<sup>1</sup> &nbsp;&nbsp;
+[Negar Hassanpour](https://webdocs.cs.ualberta.ca/~hassanpo/)<sup>2</sup>  
+[Andrea Tagliasacchi](https://taiya.github.io/)<sup>1,3,4</sup> &nbsp;&nbsp;
+[Ali Mahdavi Amiri](https://www.sfu.ca/~amahdavi)<sup>1</sup>
+
+<sup>1</sup> **Simon Fraser University** &nbsp;&nbsp;
+<sup>2</sup>Huawei &nbsp;&nbsp;
+<sup>3</sup>University of Toronto &nbsp;&nbsp;
+<sup>4</sup>Google DeepMind  
+
+*\* indicates equal contribution*  
+
+**Accepted at SIGGRAPH&nbsp;2025**
+
 </div>
-<div>
-    <sup>1</sup><b>Simon Fraser University</b>
-    <sup>2</sup>Huawei
-    <sup>3</sup>University of Toronto
-    <sup>4</sup>Google DeepMind
-        &emsp; <br>
-</div>
-<div>
-    Accepted at <b>SIGGRAPH 2025</b>
-</div>
+
 
 <h3 align="center">
   <a href="https://arxiv.org/" target='_blank'>Paper</a> |
