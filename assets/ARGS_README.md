@@ -57,7 +57,7 @@ Here is a sample JSON you can use:
 ```json
 {
   "pearl.png": {
-    "src_prompt": "an europian girl",
+    "src_prompt": "a europian girl",
     "tgt_prompt": ["an asian girl"],
     "alpha": 0.0,
     "beta": 0.2,
