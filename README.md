@@ -94,8 +94,8 @@ To get started as quickly as possible, follow the instructions in this section. 
 ### Environment Setup
 You can create and activate a Conda environment like below:
 ```shell script
-conda create -n <envname>
-conda activate <envname>  
+conda create -n cora_env
+conda activate cora_env  
 pip install --upgrade pip
 ```
 
