@@ -7,7 +7,7 @@ from einops import rearrange, repeat
 from scipy.optimize import linear_sum_assignment
 from typing import Optional, Union, Tuple, List, Callable, Dict
 
-from utils import find_smallest_key_with_suffix
+
 from model.modules.dift_utils import gen_nn_map
 
 

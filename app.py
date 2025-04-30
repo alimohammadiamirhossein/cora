@@ -1,30 +1,28 @@
-import os
-import argparse
-import torch
+import gradio as gr
+import spaces
+
 from PIL import Image
-import jsonc as json
+
 import numpy as np
 import torch.nn.functional as F
 
 from utils.pipeline_utils import *
-from utils import get_args, extract_mask, remove_foreground
-from src import get_ddpm_inversion_scheduler
-from visualization import save_results
-
-import gradio as gr
-import spaces
+from utils import get_args
 
 from main import run
 
 pipeline = None
+
+
 def get_pipeline():
     global pipeline
     if pipeline is None:
         pipeline = load_pipeline(fp16=False, cache_dir=None)
     return pipeline
 
+
 def process_masks(masks):
-    #masks: list of file paths
+    # masks: list of file paths
     processed_masks = []
     mask_composit = torch.zeros((512, 512), dtype=torch.float32, device='cuda')
     for mask_path in masks:
@@ -40,53 +38,80 @@ def process_masks(masks):
         mask_composit = None
 
     return mask_composit
+
+
 @spaces.GPU
 def main_pipeline(
-    input_image: str,
-    src_prompt: str,
-    tgt_prompt: str,
-    alpha: float,
-    beta: float,
-    w1: float,
-    seed: int,
-    object_insertion: bool = False,
-    dift_correction: bool = True,
+        input_image: str,
+        src_prompt: str,
+        tgt_prompt: str,
+        alpha: float,
+        beta: float,
+        w1: float,
+        seed: int,
+        object_insertion: bool = False,
+        dift_correction: bool = True,
 ):
     args = get_args()
     pipeline = get_pipeline()
 
-    args.theta = alpha
-    args.alpha = beta
+    args.alpha = alpha
+    args.beta = beta
     args.w1 = w1
     args.seed = seed
     args.structural_alignment = True
     args.support_new_object = object_insertion
     args.apply_dift_correction = dift_correction
-    print(args.theta, args.alpha, args.w1, args.seed, args.support_new_object)
     torch.cuda.empty_cache()
-    res_image = run(input_image['background'], src_prompt, tgt_prompt, masks=process_masks(input_image['layers']), pipeline=pipeline, args=args)[2]
+    res_image = run(input_image['background'], src_prompt, tgt_prompt, masks=process_masks(input_image['layers']),
+                    pipeline=pipeline, args=args)[2]
 
     return res_image
 
 
+DESCRIPTION = """# Cora 🖼️🐱🦅
+        ## Fast & Controllable Image Editing
 
-DESCRIPTION = """# Cora
+        ### 🛠️ Quick start  
+        1. **Upload** or drag-and-drop the image you’d like to edit.  
+        2. **Source prompt** – describe what’s in the original image.  
+        3. **Target prompt** – describe the result you want.  
+        4. Adjust the parameters as needed.  
+        5. *(Optional)* Paint a mask to specify the area to edit.  
+        6. Click **Edit** and wait a few seconds for the output.
+
+        ### ⚙️ Parameter cheat-sheet  
+
+        | Parameter | What it does | `0` (minimum) | `1` (maximum) |
+        |-----------|--------------|---------------|---------------|
+        | **alpha** | Appearance transfer control | preserve source appearance | target prompt affects appearance |
+        | **beta**  | Structural change control | preserve original structure | full layout change |
+        | **w**     | Prompt strength    | subtle tweaks | strong changes |
+        | **Seed**  | Fixes randomness for reproducibility | – | – |
+        | **Enable object insertion** | Turn on when adding new objects | – | – |
+        | **Apply correspondence correction** | Uses correspondence-aware latent fix | – | – |
+
+        ### 📜 Tips  
+        - To replicate **TurboEdit**, set **alpha = 1**, **beta = 1**, and turn **off** *Enable object insertion* and *Apply correspondence correction*.  
+        - To test reconstruction quality of the inversion, use identical source & target prompts with **alpha = 1** and **beta = 1**.
+        #### 🙏 Acknowledgements  
+        The demo template is largely adapted from **[TurboEdit on Hugging Face Spaces](https://huggingface.co/spaces/turboedit/turbo_edit)**.  
     """
 
-
 with gr.Blocks(css="app/style.css") as demo:
-    gr.Markdown(DESCRIPTION)
-
     gr.HTML(
-        """<a href="https://huggingface.co/spaces/turboedit/turbo_edit?duplicate=true">
+        """<a href="https://huggingface.co/spaces/armikaeili/cora?duplicate=true">
         <img src="https://bit.ly/3gLdBN6" alt="Duplicate Space"></a>Duplicate the Space to run privately without waiting in queue"""
     )
+    gr.Markdown(DESCRIPTION)
 
     with gr.Row():
         with gr.Column():
             input_image = gr.ImageMask(
-                label="Input image", type="filepath", height=512, width=512,brush=gr.Brush(color_mode='fixed', colors=['#555555', '#000000'])
+                label="Input image", type="filepath", height=512, width=512, brush=gr.Brush(color_mode='defaults')
             )
+            result = gr.Image(label="Result", type="pil", height=512, width=512)
+        with gr.Column():
             src_prompt = gr.Text(
                 label="Source Prompt",
                 max_lines=1,
@@ -108,7 +133,7 @@ with gr.Blocks(css="app/style.css") as demo:
                     label="alpha", minimum=0, maximum=1, value=0, step=0.01
                 )
                 beta = gr.Slider(
-                    label="beta", minimum=0, maximum=1, value=0, step=0.01
+                    label="beta", minimum=0, maximum=1, value=0.04, step=0.01
                 )
                 with gr.Row():
                     object_insertion = gr.Checkbox(
@@ -119,59 +144,75 @@ with gr.Blocks(css="app/style.css") as demo:
                         label="Apply correspondence correction",
                         value=True)
             run_button = gr.Button("Edit")
-        with gr.Column():
-            result = gr.Image(label="Result", type="pil", height=512, width=512)
 
-            # examples = [
-            #     [
-            #         "examples_demo/1.jpeg",  # input_image
-            #         "a dreamy cat sleeping on a floating leaf",  # src_prompt
-            #         "a dreamy bear sleeping on a floating leaf",  # tgt_prompt
-            #         7,  # seed
-            #         1.3,  # w1
-            #     ],
-            #     [
-            #         "examples_demo/2.jpeg",  # input_image
-            #         "A painting of a cat and a bunny surrounded by flowers",  # src_prompt
-            #         "a polygonal illustration of a cat and a bunny",  # tgt_prompt
-            #         2,  # seed
-            #         1.5,  # w1
-            #     ],
-            #     [
-            #         "examples_demo/3.jpg",  # input_image
-            #         "a chess pawn wearing a crown",  # src_prompt
-            #         "a chess pawn wearing a hat",  # tgt_prompt
-            #         2,  # seed
-            #         1.3,  # w1
-            #     ],
-            # ]
+            examples = [
+                [
+                    "dataset/white_cat.png",  # input_image
+                    "a cat",  # src_prompt
+                    "a cat wearing a suit",  # tgt_prompt
+                    0.1,  # alpha
+                    0.04,  # beta
+                    1.9,  # w1
+                    7,  # seed
+                    True,  # object_insertion
+                    True  # dift_correction
+                ],
+                [
+                    "dataset/bear.png",  # input_image
+                    "a sitting brown bear",  # src_prompt
+                    "a roaring blue bear",  # tgt_prompt
+                    0.7,  # alpha
+                    0.04,  # beta
+                    1.9,  # w1
+                    7,  # seed
+                    False,  # object_insertion
+                    True  # dift_correction
+                ],
+                [
+                    "dataset/gcat.jpg",  # input_image
+                    "a cat",  # src_prompt
+                    "an eagle",  # tgt_prompt
+                    0.7,  # alpha
+                    0.3,  # beta
+                    1.9,  # w1
+                    7,  # seed
+                    False,  # object_insertion
+                    True  # dift_correction
+                ],
+                [
+                    "dataset/dog.png",  # input_image
+                    "a photo of a dog",  # src_prompt
+                    "a photo of a dog lying",  # tgt_prompt
+                    0.0,  # alpha
+                    1,  # beta
+                    1.9,  # w1
+                    7,  # seed
+                    False,  # object_insertion
+                    True  # dift_correction
+                ],
+
+            ]
+
+            inputs = [
+                input_image,
+                src_prompt,
+                tgt_prompt,
+                alpha,
+                beta,
+                w1,
+                seed,
+                object_insertion,
+                dift_correction
+            ]
+            outputs = [result]
             #
-            # gr.Examples(
-            #     examples=examples,
-            #     inputs=[
-            #         input_image,
-            #         src_prompt,
-            #         tgt_prompt,
-            #         seed,
-            #         w1,
-            #     ],
-            #     outputs=[result],
-            #     fn=main_pipeline,
-            #     cache_examples=True,
-            # )
+            gr.Examples(
+                examples=examples,
+                inputs=inputs,
+                outputs=outputs,
+                fn=main_pipeline,
+                cache_examples=False,
+            )
 
-    inputs = [
-        input_image,
-        src_prompt,
-        tgt_prompt,
-        alpha,
-        beta,
-        w1,
-        seed,
-        object_insertion,
-        dift_correction
-    ]
-    outputs = [result]
     run_button.click(fn=main_pipeline, inputs=inputs, outputs=outputs)
-demo.launch(share=False)
-
+demo.queue(max_size=50).launch(share=False)

@@ -4,7 +4,7 @@ from einops import rearrange, repeat
 
 from typing import Any
 from model.directional_attentions import DirectionalAttentionControl, AttentionBase
-from utils import find_smallest_key_with_suffix
+from utils.utils import find_smallest_key_with_suffix
 
 
 def register_attention_editor_diffusers(model: Any, editor: AttentionBase):
