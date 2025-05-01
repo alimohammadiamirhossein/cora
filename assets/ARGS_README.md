@@ -72,31 +72,55 @@ Here is a sample JSON you can use:
     "src_prompt": "a photo of a dolphin",
     "tgt_prompt": ["a photo of a shark"],
     "alpha": 0.6,
-    "beta": 0.4,
+    "beta": 0.4
+  },
+  "bald_man.jpg": {
+    "src_prompt": "A bald man",
+    "tgt_prompt": [
+      "A man with natural looking hair"
+    ],
+    "alpha": 0.1,
+    "masks": "dataset/bald_man_mask.png"
   }
 }
 ```
 
 ## 🖼️ Extracting Masks Interactively
 
-If you want to define mask regions manually, you can use our interactive bounding box tool. This tool allows you to click and drag on an image to define the area to edit.
+If you prefer to define mask regions manually, use one of our interactive tools:
 
-To launch the tool, simply run:
+- **Bounding-box tool**
 
-```bash
-python ./visualization/draw_box.py
-```
+    ```bash
+    python ./visualization/draw_box.py <IMAGE-PATH>
+    ```
 
-### How it works:
+- **Free-form masking tool**
 
-- The image will open in a window.
-- Click and hold the left mouse button to start drawing a bounding box.
-- Drag the mouse to define the area you want to edit.
-- Release the mouse button to finalize the box.
-- The `start_point` and `end_point` coordinates will automatically be printed in the terminal.
-- Copy these coordinates and paste them into your JSON file under the `masks` field.
+    ```bash
+    python ./visualization/draw_mask.py <IMAGE-PATH>
+    ```
 
-> 📌 **Tip:** Images are automatically resized to `(512, 512)` in the script to ensure consistency across edits.
+### How the tools work
+
+**Common steps**
+
+- The image opens in a window.  
+- Click-and-hold the left mouse button, then drag to outline the region you want to edit.
+
+**Bounding-box tool (`draw_box.py`)**
+
+- Release the mouse button to finalize the box.  
+- The `start_point` and `end_point` coordinates are printed in the terminal—copy them into the `masks` field of your JSON file.
+
+**Masking tool (`draw_mask.py`)**
+
+- Press `+` / `-` to change brush size while drawing (optional).  
+- When finished, press `q` to save; the mask file is written to the same directory as the image.  
+- Supply that mask’s path in the `masks` field of your JSON file.
+
+> 📌 **Tip:** Each script automatically resizes images to **512 × 512 px** so your edits stay consistent.
+
 
 ### 🎯 Why Use Masks?
 

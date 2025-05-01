@@ -80,6 +80,7 @@ Cora
 ├── visualization                    
 |   ├── image_utils.py                -- resizing, saving images, and handling prompts.
 |   ├── draw_box.py                   -- interactive bounding box drawing tool
+|   ├── draw_mask.py                  -- interactive mask drawing tool
 ```
 # Getting Started  
 To get started as quickly as possible, follow the instructions in this section. This should allow you train a model from scratch, evaluate your pretrained models, and produce visualizations.  

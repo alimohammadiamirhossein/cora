@@ -49,7 +49,6 @@ def main_pipeline(
         beta: float,
         w1: float,
         seed: int,
-        object_insertion: bool = False,
         dift_correction: bool = True,
 ):
     args = get_args()
@@ -60,7 +59,7 @@ def main_pipeline(
     args.w1 = w1
     args.seed = seed
     args.structural_alignment = True
-    args.support_new_object = object_insertion
+    args.support_new_object = True
     args.apply_dift_correction = dift_correction
     torch.cuda.empty_cache()
     res_image = run(input_image['background'], src_prompt, tgt_prompt, masks=process_masks(input_image['layers']),
@@ -88,7 +87,6 @@ DESCRIPTION = """# Cora 🖼️🐱🦅
         | **beta**  | Structural change control | preserve original structure | full layout change |
         | **w**     | Prompt strength    | subtle tweaks | strong changes |
         | **Seed**  | Fixes randomness for reproducibility | – | – |
-        | **Enable object insertion** | Turn on when adding new objects | – | – |
         | **Apply correspondence correction** | Uses correspondence-aware latent fix | – | – |
 
         ### 📜 Tips  
@@ -136,10 +134,6 @@ with gr.Blocks(css="app/style.css") as demo:
                     label="beta", minimum=0, maximum=1, value=0.04, step=0.01
                 )
                 with gr.Row():
-                    object_insertion = gr.Checkbox(
-                        label="Enable object insertion",
-                        value=False
-                    )
                     dift_correction = gr.Checkbox(
                         label="Apply correspondence correction",
                         value=True)
@@ -151,10 +145,9 @@ with gr.Blocks(css="app/style.css") as demo:
                     "a cat",  # src_prompt
                     "a cat wearing a suit",  # tgt_prompt
                     0.1,  # alpha
-                    0.04,  # beta
+                    0.1,  # beta
                     1.9,  # w1
                     7,  # seed
-                    True,  # object_insertion
                     True  # dift_correction
                 ],
                 [
@@ -162,10 +155,9 @@ with gr.Blocks(css="app/style.css") as demo:
                     "a sitting brown bear",  # src_prompt
                     "a roaring blue bear",  # tgt_prompt
                     0.7,  # alpha
-                    0.04,  # beta
+                    0.1,  # beta
                     1.9,  # w1
                     7,  # seed
-                    False,  # object_insertion
                     True  # dift_correction
                 ],
                 [
@@ -176,7 +168,6 @@ with gr.Blocks(css="app/style.css") as demo:
                     0.3,  # beta
                     1.9,  # w1
                     7,  # seed
-                    False,  # object_insertion
                     True  # dift_correction
                 ],
                 [
@@ -187,7 +178,6 @@ with gr.Blocks(css="app/style.css") as demo:
                     1,  # beta
                     1.9,  # w1
                     7,  # seed
-                    False,  # object_insertion
                     True  # dift_correction
                 ],
 
@@ -201,7 +191,6 @@ with gr.Blocks(css="app/style.css") as demo:
                 beta,
                 w1,
                 seed,
-                object_insertion,
                 dift_correction
             ]
             outputs = [result]

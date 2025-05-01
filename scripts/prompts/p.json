@@ -40,12 +40,7 @@
       "A man with natural looking hair"
     ],
     "alpha": 0.1,
-    "masks": [
-      {
-        "start_point": [96, 38],
-        "end_point": [398, 180]
-      }
-    ]
+    "masks": "dataset/bald_man_mask.png"
   },
   "man3.jpg": {
     "src_prompt": "old man",
