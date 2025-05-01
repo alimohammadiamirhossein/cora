@@ -90,8 +90,8 @@ DESCRIPTION = """# Cora 🖼️🐱🦅
         | **Apply correspondence correction** | Uses correspondence-aware latent fix | – | – |
 
         ### 📜 Tips  
-        - To replicate **TurboEdit**, set **alpha = 1**, **beta = 1**, and turn **off** *Enable object insertion* and *Apply correspondence correction*.  
-        - To test reconstruction quality of the inversion, use identical source & target prompts with **alpha = 1** and **beta = 1**.
+        - To replicate **TurboEdit**, set **alpha = 1**, **beta = 1**, and turn **off**  *Apply correspondence correction*.  
+        - To test reconstruction quality of the inversion, use identical source & target prompts with **alpha = 1**, **beta = 1**, and **w = 1**.
         #### 🙏 Acknowledgements  
         The demo template is largely adapted from **[TurboEdit on Hugging Face Spaces](https://huggingface.co/spaces/turboedit/turbo_edit)**.  
     """
