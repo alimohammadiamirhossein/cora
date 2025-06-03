@@ -23,7 +23,7 @@
 
 
 <h3 align="center">
-  <a href="https://arxiv.org/" target='_blank'>Paper</a> |
+  <a href="https://arxiv.org/abs/2505.23907" target='_blank'>Paper</a> |
   <a href="https://cora-edit.github.io/" target='_blank'>Project Page</a> 
 </h3>
 </div>
@@ -132,9 +132,13 @@ python app.py
 ## Citation
 If you find this project useful for your research, please use the following BibTeX entry.
 ```
-@misc{alimohammadi2025Cora,
+@misc{almohammadi2025coracorrespondenceawareimageediting,
       title={Cora: Correspondence-aware image editing using few step diffusion}, 
-      author={Amirhossein Alimohammadi and Aryan Mikaeili and Sauradip Nag and Negar Hassanpour and Andrea Tagliasacchi and Ali Mahdavi Amiri},
+      author={Amirhossein Almohammadi and Aryan Mikaeili and Sauradip Nag and Negar Hassanpour and Andrea Tagliasacchi and Ali Mahdavi-Amiri},
       year={2025},
+      eprint={2505.23907},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.23907}, 
 }
 ```
